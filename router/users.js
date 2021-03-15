@@ -1,30 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
-let users = [
-	{id:1 , name:'widi arrohman', email:'widi@gmail.com'},
-	{id:2 , name:'wahida hanifah', email:'wahida@gmail.com'},
-	{id:3 , name:'wira sanjuni', email:'wira@gmail.com'}
-
-]
+const UserController = require('../controllers/UserController')
 
 //route routing
 router.route('/users')
-	.get(function(request, response){
-		if (users.length > 0) {
-			response.json({
-				status: true,
-				url: request.url,
-				method : request.method,
-				data: users
-			})
-		} else {
-			response.json({
-				status: false,
-				message: 'Data tidak ada'
-			})
-		}
-	})
+	.get(UserController.index)
 	//dengan lebih dari 1 id dan tanpa const
 	// .post('/users/:userId/books/:booksId', function(req,res){
 		// response.send(request.params)
