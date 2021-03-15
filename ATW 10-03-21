@@ -1,0 +1,40 @@
+1. var(bisa dipanggil kedalam function) vs let(tidak bisa dipanggil dalam function jika di diluar) vs const(tidak bisa diubah)
+2. scope
+ - global scope
+ - local scope
+3. string literals / template literals
+4. named function (penamaan pada function)
+	function nama(){
+		#code...
+	}
+
+5. anonymous function
+	let hello = function(){
+		#code...
+	}
+6. arrow function
+	//let hello = function(nama,umut) => {
+	let hello = (nama,umut) => {
+		#code...
+	}
+
+7. chain method (fungsi berantai)
+	function kalkulator(a,b,hasil){
+		tambah = a+b
+		kurang = a-b
+		kali = a*b
+		bagi = a/b
+		return hasil(tambah, kurang, kali, bagi)
+	}
+
+	kalkulator(10,2,function(t,k,x,b){
+		console.log(`tambah ${t}, kurang ${k}, kali${x}, bagi${b}`)
+	})
+
+MEAN = MONGO, EXPRESS, ANGULAR, NODEJS
+MERN = MONGO, EXPRESS, REACT, NODEJS
+MEVN = MONGO, EXPRESS, VUE, NODEJS
+
+
+
+
