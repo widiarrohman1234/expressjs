@@ -3,7 +3,9 @@ const router = express.Router()
 
 let users = [
 	{id:1 , name:'widi arrohman', email:'widi@gmail.com'},
-	{id:2 , name:'wahida hanifah', email:'wahida@gmail.com'}
+	{id:2 , name:'wahida hanifah', email:'wahida@gmail.com'},
+	{id:3 , name:'wira sanjuni', email:'wira@gmail.com'}
+
 ]
 
 //route routing
