@@ -12,38 +12,8 @@ router.route('/users')
 	.post(UserController.Store)
 
 //hanya 1 id dan menggunakan const
-router.put('/users/:id', function (request, response){
-	// const id = req.params //json
-	const id = request.params.id
-	users.filter(user => {
-		if(user.id == id) {
-			user.id = id
-			user.name = request.body.name
-			user.email = request.body.email
+router.put('/users/:id', UserController.Update)
 
-			return user
-		}
-	})
-	// res.send(id)
-	response.json({
-		status: true,
-		method: request.method,
-		message: 'Data berhasil diubah',
-		data: users,
-		url: request.url
-	})
-})
-
-router.delete('/users/:userId', function (request, response) {
-	let id = request.params.userId
-	users = users.filter(user => user.id != id)
-	response.json({
-		status: true,
-		method: request.method,
-		message: 'Data berhasil dihapus',
-		data: users,
-		url: request.url
-	}) //string
-})
+router.delete('/users/:userId', UserController.Delete)
 
 module.exports = router

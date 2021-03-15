@@ -30,6 +30,38 @@ module.exports ={
 			data: users,
 			url: request.url
 		})
+	},
+	Update:function (request, response){
+	// const id = req.params //json
+	const id = request.params.id
+	users.filter(user => {
+		if(user.id == id) {
+			user.id = id
+			user.name = request.body.name
+			user.email = request.body.email
+
+			return user
+		}
+	})
+	// res.send(id)
+	response.json({
+		status: true,
+		method: request.method,
+		message: 'Data berhasil diubah',
+		data: users,
+		url: request.url
+	})
+	},
+	Delete:function (request, response) {
+	let id = request.params.userId
+	users = users.filter(user => user.id != id)
+	response.json({
+		status: true,
+		method: request.method,
+		message: 'Data berhasil dihapus',
+		data: users,
+		url: request.url
+	}) //string
 	}
 
 }
