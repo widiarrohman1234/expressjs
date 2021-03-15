@@ -5,21 +5,11 @@ const UserController = require('../controllers/UserController')
 
 //route routing
 router.route('/users')
-	.get(UserController.index)
+	.get(UserController.Index)
 	//dengan lebih dari 1 id dan tanpa const
 	// .post('/users/:userId/books/:booksId', function(req,res){
 		// response.send(request.params)
-	.post(function(request, response){
-		// console.log(req.body)
-		users.push(request.body)
-		response.send({
-			status: true,
-			method: request.method,
-			message: 'Data berhasil disimpan',
-			data: users,
-			url: request.url
-		})
-	})
+	.post(UserController.Store)
 
 //hanya 1 id dan menggunakan const
 router.put('/users/:id', function (request, response){
