@@ -20,6 +20,7 @@ module.exports ={
 			})
 		}
 	},
+	
 	Store:function(request, response){
 		// console.log(req.body)
 		users.push(request.body)
@@ -31,6 +32,7 @@ module.exports ={
 			url: request.url
 		})
 	},
+
 	Update:function (request, response){
 	// const id = req.params //json
 	const id = request.params.id
@@ -52,6 +54,7 @@ module.exports ={
 		url: request.url
 	})
 	},
+
 	Delete:function (request, response) {
 	let id = request.params.userId
 	users = users.filter(user => user.id != id)
