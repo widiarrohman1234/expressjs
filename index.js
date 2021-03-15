@@ -13,6 +13,9 @@ var myLogger = function(request, response, next){
 }
 app.use(myLogger)
 
+// template engine
+app.set('view engine', 'ejs')
+
 const userRouter = require('./router/users')
 
 ///express router
@@ -22,17 +25,18 @@ app.use(userRouter)
 app.get('/', (request, response) => {
 	const kelas = {
 		id:1,
-		kelas:'teknik komputer jaringan',
+		nama:'teknik komputer jaringan',
 		date: request.time.toString()
 	}
 	// console.log('dd express Js')
-  response.json(kelas)
+  	// response.json(kelas)
+  	response.render('pages/index', {kelas: kelas})
 })
 
 // https://expressjs.com/en/guide/routing.html belajar route
 
 //2
-app.get('/about', function(req, res){
+app.get('/about', function(request, response){
 	// res.send('<h3>some html</h3>')
 	// res.status(404).send('Sorry, we cannot find that!')
 	// res.status(500).send({ error: 'something blew up' })
@@ -45,7 +49,8 @@ app.get('/about', function(req, res){
 	// res.sendStatus(404)//not found
 	// res.sendStatus(500)//internal server error
 	// res.sendStatus(9999 )//internal server error
-	res.send('About')
+	// res.send('About')
+	response.render('pages/about')
 
 })
 
