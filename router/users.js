@@ -10,16 +10,34 @@ let users = [
 
 //route routing
 router.route('/users')
-	.get(function(req,res){
-		res.json(users)
+	.get(function(request, response){
+		if (users.length > 0) {
+			response.json({
+				status: true,
+				url: request.url,
+				method : request.method,
+				data: users
+			})
+		} else {
+			response.json({
+				status: false,
+				message: 'Data tidak ada'
+			})
+		}
 	})
 	//dengan lebih dari 1 id dan tanpa const
 	// .post('/users/:userId/books/:booksId', function(req,res){
 		// response.send(request.params)
-	.post(function(req, res){
+	.post(function(request, response){
 		// console.log(req.body)
-		users.push(req.body)
-		res.json(users)
+		users.push(request.body)
+		response.send({
+			status: true,
+			method: request.method,
+			message: 'Data berhasil disimpan',
+			data: users,
+			url: request.url
+		})
 	})
 
 //hanya 1 id dan menggunakan const
