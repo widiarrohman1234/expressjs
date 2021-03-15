@@ -54,7 +54,13 @@ router.put('/users/:id', function (request, response){
 		}
 	})
 	// res.send(id)
-	response.json(users)
+	response.json({
+		status: true,
+		method: request.method,
+		message: 'Data berhasil diubah',
+		data: users,
+		url: request.url
+	})
 })
 
 router.delete('/users/:userId', function (request, response) {
