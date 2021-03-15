@@ -39,8 +39,10 @@ router.put('/users/:id', function (request, response){
 	response.json(users)
 })
 
-router.delete('/users/:userId', function (req, res) {
-	res.send(req.params.userId) //string
+router.delete('/users/:userId', function (request, response) {
+	let id = request.params.userId
+	users = users.filter(user => user.id != id)
+	response.send(users) //string
 })
 
 module.exports = router
