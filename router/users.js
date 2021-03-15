@@ -16,8 +16,10 @@ router.route('/users')
 	//dengan lebih dari 1 id dan tanpa const
 	// .post('/users/:userId/books/:booksId', function(req,res){
 		// response.send(request.params)
-	.post(function(req,res){
-		res.send('post users')
+	.post(function(req, res){
+		// console.log(req.body)
+		users.push(req.body)
+		res.json(users)
 	})
 
 //hanya 1 id dan menggunakan const
