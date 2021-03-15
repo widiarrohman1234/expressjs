@@ -6,21 +6,24 @@ let users = [
 
 module.exports ={
 	Index:function(request, response){
-			if (users.length > 0) {
-				response.json({
-					status: true,
-					url: request.url,
-					method : request.method,
-					data: users
-				})
-			} else {
-			response.json({
-				status: false,
-				message: 'Data tidak ada'
-			})
-		}
+		// 	if (users.length > 0) {
+		// 		response.json({
+		// 			status: true,
+		// 			url: request.url,
+		// 			method : request.method,
+		// 			data: users
+		// 		})
+		// 	} else {
+		// 	response.json({
+		// 		status: false,
+		// 		message: 'Data tidak ada'
+		// 	})
+		// }
+		response.render('pages/user/index', {users})
 	},
-	
+	Create:function(request,response){
+		response.render('pages/user/create')
+	},
 	Store:function(request, response){
 		// console.log(req.body)
 		users.push(request.body)

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Index</title>
+	<link rel="stylesheet" type="text/css" href="assets/style.css">
+</head>
+<body>
+<%- include('../components/navbar')%>
+<a href="/users/create">Register</a>
+<h1>Daftar User</h1>
+<ul>
+	<% users.forEach(function(user) { %>
+		<li><%=user.name %> - <%=user.email %></li>
+	<% }) %>
+	
+</ul>
+<footer>
+	<p>&copy; 2021 Widi_arrohman</p>
+</footer>
+
+</body>
+</html>
