@@ -23,9 +23,20 @@ router.route('/users')
 	})
 
 //hanya 1 id dan menggunakan const
-router.put('/users/:id', function (req, res){
-	const id = req.params //json
-	res.send(id)
+router.put('/users/:id', function (request, response){
+	// const id = req.params //json
+	const id = request.params.id
+	users.filter(user => {
+		if(user.id == id) {
+			user.id = id
+			user.name = request.body.name
+			user.email = request.body.email
+
+			return user
+		}
+	})
+	// res.send(id)
+	response.json(users)
 })
 
 router.delete('/users/:userId', function (req, res) {
