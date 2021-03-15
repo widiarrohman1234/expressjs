@@ -1,3 +1,5 @@
+const { v4: uuidv4} = require('uuid')
+
 let users = [
 	{id:1 , name:'widi arrohman', email:'widi@gmail.com'},
 	{id:2 , name:'wahida hanifah', email:'wahida@gmail.com'},
@@ -25,15 +27,26 @@ module.exports ={
 		response.render('pages/user/create')
 	},
 	Store:function(request, response){
-		// console.log(req.body)
-		users.push(request.body)
-		response.send({
-			status: true,
-			method: request.method,
-			message: 'Data berhasil disimpan',
-			data: users,
-			url: request.url
+		// console.log(request.body)
+		// users.push(request.body)
+		// response.send({
+		// 	status: true,
+		// 	method: request.method,
+		// 	message: 'Data berhasil disimpan',
+		// 	data: users,
+		// 	url: request.url
+		// })
+		// users.push(request.body)
+		users.push({
+			id: uuidv4(),
+			name: request.body.name,
+			email: request.body.email
 		})
+		// console.log(users)
+		// console.log(uuidv4())
+		// response.end()
+		response.send(users) //tampilan json
+
 	},
 
 	Update:function (request, response){
