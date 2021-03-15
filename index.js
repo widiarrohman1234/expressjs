@@ -5,19 +5,28 @@ const port = 3000
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
+//middleware
+var myLogger = function(request, response, next){
+	// console.log('Logged')
+	request.time = new Date()
+	next()
+}
+app.use(myLogger)
+
 const userRouter = require('./router/users')
 
 ///express router
 app.use(userRouter)
 
 //1
-app.get('/', (req, res) => {
+app.get('/', (request, response) => {
 	const kelas = {
 		id:1,
-		kelas:'teknik komputer jaringan'
+		kelas:'teknik komputer jaringan',
+		date: request.time.toString()
 	}
 	// console.log('dd express Js')
-  res.send(kelas)
+  response.json(kelas)
 })
 
 // https://expressjs.com/en/guide/routing.html belajar route
