@@ -66,7 +66,13 @@ router.put('/users/:id', function (request, response){
 router.delete('/users/:userId', function (request, response) {
 	let id = request.params.userId
 	users = users.filter(user => user.id != id)
-	response.send(users) //string
+	response.json({
+		status: true,
+		method: request.method,
+		message: 'Data berhasil dihapus',
+		data: users,
+		url: request.url
+	}) //string
 })
 
 module.exports = router
