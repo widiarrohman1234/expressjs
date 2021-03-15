@@ -9,9 +9,14 @@
 <a href="/users/create">Register</a>
 <h1>Daftar User</h1>
 <ul>
-	<% users.forEach(function(user) { %>
-		<li><%=user.name %> - <%=user.email %></li>
-	<% }) %>
+	<% if (users.length > 0) {%>
+		<% users.forEach(function(user) { %>
+			<li><%=user.name.toUpperCase() %> - <%=user.email %></li>
+		<% }) %>
+	<% } else {%>
+		<li>data tidak ada</li>
+	<% } %>
+
 	
 </ul>
 <footer>
