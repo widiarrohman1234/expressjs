@@ -38,6 +38,8 @@ module.exports ={
 	},
 	Store:function(request, response){
 		// console.log(request.body)
+
+			//status data
 		// users.push(request.body)
 		// response.send({
 		// 	status: true,
@@ -47,16 +49,33 @@ module.exports ={
 		// 	url: request.url
 		// })
 		// users.push(request.body)
-		users.push({
-			id: uuidv4(),
-			name: request.body.name,
-			email: request.body.email
-		})
+
+			//untuk data array diatas
+		// users.push({
+		// 	id: uuidv4(),
+		// 	name: request.body.name,
+		// 	email: request.body.email
+		// })
+
 		// console.log(users)
 		// console.log(uuidv4())
 		// response.end()
 		// response.send(users) //tampilan json
+
+		const user = new User({
+			name: request.body.name,
+			email: request.body.email,
+			password: request.body.password,
+		})
+
+		user.save(function (error, data) {
+		  if (error) console.log(error)
+		  	console.log(data)
+		  	// return handleError(err);
+		  // saved!
 		response.redirect('/users') //redirect ke halaman
+
+		})
 
 	},
 
