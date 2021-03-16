@@ -1,5 +1,8 @@
 const { v4: uuidv4} = require('uuid')
 
+//require model user
+const User = require('../models/user')
+
 let users = [
 	{id:1 , name:'widi arrohman', email:'widi@gmail.com'},
 	{id:2 , name:'wahida hanifah', email:'wahida@gmail.com'},
