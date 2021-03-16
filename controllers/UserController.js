@@ -107,8 +107,14 @@ module.exports ={
 		response.redirect('/users') //redirect ke halaman
 		})
 
-	},
+	},Edit:function(request, response){
+		const id = request.params.id
 
+		User.findById(id, function(error, data){
+			if (error) console.log(error)
+			response.render('pages/user/edit',{user: data})
+		})
+	},
 	Update:function (request, response){
 	// const id = req.params //json
 	const id = request.params.id
