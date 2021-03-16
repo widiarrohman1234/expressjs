@@ -22,6 +22,13 @@ module.exports ={
 		// 	})
 		// }
 		response.render('pages/user/index', {users})
+	},Show:function(request, response){
+		const id = request.params.iduser
+		const data = users.filter(users => {
+			return users.id == id
+		})
+		// console.log(id)
+		response.render('pages/user/show',{user: data})
 	},
 	Create:function(request,response){
 		response.render('pages/user/create')

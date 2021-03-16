@@ -2,16 +2,18 @@
 <html>
 <head>
 	<title>User Index</title>
-	<link rel="stylesheet" type="text/css" href="assets/style.css">
+	<link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
 <%- include('../components/navbar')%>
 <a href="/users/create">Register</a>
-<h1>Daftar User</h1>
+<h1>Daftar User (<%=users.length%>)</h1>
 <ul>
 	<% if (users.length > 0) {%>
 		<% users.forEach(function(user) { %>
-			<li><%=user.name.toUpperCase() %> - <%=user.email %></li>
+			<li><a href="/users/<%=user.id %>">
+				<%=user.name.toUpperCase() %></a> - <%=user.email %>
+			</li>
 		<% }) %>
 	<% } else {%>
 		<li>data tidak ada</li>

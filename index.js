@@ -17,7 +17,7 @@ app.use(myLogger)
 app.set('view engine', 'ejs')
 // static file
 // app.use(express.static('public'))
-app.use('/assets',express.static('public'))
+app.use(express.static('public'))
 
 const userRouter = require('./router/users')
 
