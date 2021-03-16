@@ -3,11 +3,11 @@ const { v4: uuidv4} = require('uuid')
 //require model user
 const User = require('../models/user')
 
-let users = [
-	{id:1 , name:'widi arrohman', email:'widi@gmail.com'},
-	{id:2 , name:'wahida hanifah', email:'wahida@gmail.com'},
-	{id:3 , name:'wira sanjuni', email:'wira@gmail.com'}
-]
+// let users = [
+// 	{id:1 , name:'widi arrohman', email:'widi@gmail.com'},
+// 	{id:2 , name:'wahida hanifah', email:'wahida@gmail.com'},
+// 	{id:3 , name:'wira sanjuni', email:'wira@gmail.com'}
+// ]
 
 module.exports ={
 	Index:function(request, response){
@@ -24,7 +24,11 @@ module.exports ={
 		// 		message: 'Data tidak ada'
 		// 	})
 		// }
+		User.find(function(error, users){
+			if (error) console.log(error)
+
 		response.render('pages/user/index', {users})
+		})
 	},Show:function(request, response){
 		const id = request.params.iduser
 		const data = users.filter(users => {
