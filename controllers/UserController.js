@@ -45,7 +45,8 @@ module.exports ={
 		// console.log(users)
 		// console.log(uuidv4())
 		// response.end()
-		response.send(users) //tampilan json
+		// response.send(users) //tampilan json
+		response.redirect('/users') //redirect ke halaman
 
 	},
 
