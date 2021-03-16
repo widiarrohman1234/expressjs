@@ -26,7 +26,15 @@ module.exports ={
 		// }
 		// User.find({email: 'user2@gmail.com'},function(error, users){ //untuk memilih sesuai email dari parameter ke 1
 		// User.findById("60507bb4aa1c9114ac1df49e",function(error, users){ //untuk memilih sesuai id dari parameter ke 1
-		User.find(function(error, users){
+		// User.find({},"name email",function(error, users){ //digunakan untuk select field tertentu seperti select mysql
+		// User.find({name: /user2/i},function(error, users){ //digunakan untuk mencari data seperti query like pada mysql
+		let keyword = {}
+
+		if (request.query.keyword) {
+			keyword = {name: {$regex: request.query.keyword}}
+		}
+
+		User.find(keyword, "name email", function(error, users){ 
 			if (error) console.log(error)
 			console.log(users)
 		response.render('pages/user/index', {users})
