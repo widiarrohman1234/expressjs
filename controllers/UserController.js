@@ -24,18 +24,27 @@ module.exports ={
 		// 		message: 'Data tidak ada'
 		// 	})
 		// }
+		// User.find({email: 'user2@gmail.com'},function(error, users){ //untuk memilih sesuai email dari parameter ke 1
+		// User.findById("60507bb4aa1c9114ac1df49e",function(error, users){ //untuk memilih sesuai id dari parameter ke 1
 		User.find(function(error, users){
 			if (error) console.log(error)
-
+			console.log(users)
 		response.render('pages/user/index', {users})
 		})
 	},Show:function(request, response){
 		const id = request.params.iduser
-		const data = users.filter(users => {
-			return users.id == id
-		})
+
+		//sytax untuk mengambil array dari atas
+			// const data = users.filter(users => {
+			// 	return users.id == id
+			// })
 		// console.log(id)
+
+		User.findById(id, function(error, data){
+			if (error) console.log(error)
+				console.log(data)
 		response.render('pages/user/show',{user: data})
+		})
 	},
 	Create:function(request,response){
 		response.render('pages/user/create')

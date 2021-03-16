@@ -11,7 +11,7 @@
 <ul>
 	<% if (users.length > 0) {%>
 		<% users.forEach(function(user) { %>
-			<li><a href="/users/<%=user.id %>">
+			<li><a href="/users/<%=user._id %>">
 				<%=user.name.toUpperCase() %></a> - <%=user.email %>
 			</li>
 		<% }) %>
