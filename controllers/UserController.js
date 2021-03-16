@@ -62,19 +62,28 @@ module.exports ={
 		// response.end()
 		// response.send(users) //tampilan json
 
-		const user = new User({
+			//store data cara 1
+		// const user = new User({
+		// 	name: request.body.name,
+		// 	email: request.body.email,
+		// 	password: request.body.password,
+		// })
+
+		// user.save(function (error, data) {
+		//   if (error) console.log(error)
+		//   	console.log(data)
+		// response.redirect('/users') //redirect ke halaman
+		// })
+
+			//store data cara 2
+		User.create({
 			name: request.body.name,
 			email: request.body.email,
-			password: request.body.password,
-		})
-
-		user.save(function (error, data) {
-		  if (error) console.log(error)
+			password: request.body.password
+		}, function (error, data){
+			if (error) console.log(error)
 		  	console.log(data)
-		  	// return handleError(err);
-		  // saved!
 		response.redirect('/users') //redirect ke halaman
-
 		})
 
 	},
