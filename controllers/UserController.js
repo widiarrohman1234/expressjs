@@ -36,7 +36,7 @@ module.exports ={
 
 		User.find(keyword, "name email", function(error, users){ 
 			if (error) console.log(error)
-			console.log(users)
+			// console.log(users)
 		response.render('pages/user/index', {users})
 		})
 	},Show:function(request, response){
